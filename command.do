@@ -8,10 +8,12 @@ gen lnx1 = ln(x1)
 gen lnx2 = ln(x2)
 gen lnx3 = ln(x3)
 gen lnx4 = ln(x4)
+
 scatter lny lnx1
 scatter lny lnx2
 scatter lny lnx3
 scatter lny lnx4
+
 tsset 年份
 gen dlny = D.lny
 gen dlnx1 = D.lnx1
@@ -23,12 +25,15 @@ gen d2lnx1 = D.dlnx1
 gen d2lnx2 = D.dlnx2
 gen d2lnx3 = D.dlnx3
 gen d2lnx4 = D.dlnx4
+
 dfuller d2lny
 dfuller d2lnx1
 dfuller d2lnx2
 dfuller d2lnx3
 dfuller d2lnx4
+
 johans y x1 x2 x3 x4, lags(2)
+
 reg lny lnx1 lnx2 lnx3 lnx4
 pwcorr lny lnx1 lnx2 lnx3 lnx4
 estat vif
